@@ -1,0 +1,26 @@
+{
+    "name": "bootstrap-theme",
+    "version": "1.0.0",
+    "description": "Proyecto starter para bootstrap 4 apps",
+    "main": "index.js",
+    "scripts": {
+        "start": "gulp",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Lucas Colombo",
+    "license": "MIT",
+    "dependencies": {
+        "bootstrap": "4.0.0-beta",
+        "font-awesome": "^4.7.0",
+        "jquery": "^3.2.1",
+        "popper.js": "^1.11.1"
+    },
+    "devDependencies": {
+        "browser-sync": "^2.18.13",
+        "fancy-log": "^1.3.2",
+        "gulp": "^3.9.1",
+        "gulp-hub": "^0.8.0",
+        "gulp-load-plugins": "^1.5.0",
+        "gulp-sass": "^3.1.0"
+    }
+}
