@@ -8,14 +8,13 @@ var source = 'src/';
 var dist = 'out/';
 var bootstrapSass = { in: './node_modules/bootstrap/scss/' };
 
-
 function getSassOption(env) {
     var input = watch = source;
     var output = ((env == 'prod') ? dist : source);
 
     return {
-        in: input + 'scss/*.scss',
-        out: output + 'css/',
+        src: input + 'scss/*.scss',
+        dest: output + 'css/',
         watch: watch + 'scss/**/*',
         env: env,
         sassOpts: {
@@ -27,19 +26,36 @@ function getSassOption(env) {
     };
 }
 
+function getJsOption(env) {
+    var input = watch = source;
+    var output = ((env == 'prod') ? dist : source);
+
+    return {
+        src: ['node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/jquery/dist/jquery.min.js','node_modules/popper.js/dist/umd/popper.min.js'],
+        dest: output + 'js/',
+        watch: watch + 'js/*.js',
+        env: env
+    };
+}
+
 function getTask(task, options) {
     return require('./tasks/' + task)(gulp, plugins, options, browserSync);
 }
 
-sassTask = getTask('sass', getSassOption('dev'))
-initBrowserSyncTask = getTask('init-browser-sync', null);
+/* Tasks */
 
+var sassTask = getTask('sass', getSassOption('dev'))
 gulp.task('sass', sassTask);
 
-gulp.task('serve', ['sass'], function() {
-    initBrowserSyncTask();
+var copyJsTask = getTask('copy-js', getJsOption('dev'))
+gulp.task('js', copyJsTask);
 
+var initBrowserSyncTask = getTask('init-browser-sync', null);
+gulp.task('serve', ['sass', 'js'], function() {
+    initBrowserSyncTask();
+    
     gulp.watch(getSassOption('dev').watch, ['sass']);
+    gulp.watch(getJsOption('dev').watch).on('change', browserSync.reload);
     gulp.watch("src/*.html").on('change', browserSync.reload);
 });
 
