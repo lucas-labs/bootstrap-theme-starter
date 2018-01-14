@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var log = require('fancy-log');
 var plugins = require('gulp-load-plugins')();
+var browserSync = require('browser-sync').create();
 
 // constantes
 var source = 'src/';
@@ -16,6 +17,7 @@ function getSassOption(env) {
         in: input + 'scss/*.scss',
         out: output + 'css/',
         watch: watch + 'scss/**/*',
+        env: env,
         sassOpts: {
             outputStyle: 'nested',
             precison: 3,
@@ -25,13 +27,20 @@ function getSassOption(env) {
     };
 }
 
-
 function getTask(task, options) {
-    return require('./tasks/' + task)(gulp, plugins, getSassOption('dev'));
+    return require('./tasks/' + task)(gulp, plugins, options, browserSync);
 }
 
-gulp.task('sass', getTask('sass', getSassOption('dev')));
+sassTask = getTask('sass', getSassOption('dev'))
+initBrowserSyncTask = getTask('init-browser-sync', null);
 
-gulp.task('default', ['sass'], function () {
+gulp.task('sass', sassTask);
+
+gulp.task('serve', ['sass'], function() {
+    initBrowserSyncTask();
+
     gulp.watch(getSassOption('dev').watch, ['sass']);
+    gulp.watch("src/*.html").on('change', browserSync.reload);
 });
+
+gulp.task('default', ['serve']);
