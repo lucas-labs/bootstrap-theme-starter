@@ -44,7 +44,7 @@ gulp.task('serve', ['sass', 'js'], function() {
     gulp.watch(options.sass(DEV).watch, ['sass']);
     gulp.watch(options.bootstrap_js(DEV).watch).on('change', browserSync.reload);
     gulp.watch(options.html(DEV).watch).on('change', browserSync.reload);
-    gulp.watch(options.img(DEV)).watch.on('change', browserSync.reload);
+    gulp.watch(options.img(DEV).watch).on('change', browserSync.reload);
 });
 
 gulp.task('default', ['serve']);
