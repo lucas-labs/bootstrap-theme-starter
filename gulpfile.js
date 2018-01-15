@@ -10,11 +10,28 @@ function getTask(task, options) {
     return require('./tasks/' + task)(gulp, plugins, options, browserSync);
 }
 
+/* Build task */
+gulp.task('build', function () {
+    var copyHtmlFilesTask = getTask('copy-html-files-to-out', options.html(PROD));
+    var processJs = getTask('process-js', options.js(PROD));
+    var sassTask = getTask('sass', options.sass(PROD));
+
+    log("Generating HTML files");
+    copyHtmlFilesTask();
+
+    log("Generating JS files");
+    processJs();
+
+    log("Compiling SASS and minifying CSS output");
+    log(options.sass(PROD))
+    sassTask();
+});
+
 /* Tasks */
-var sassTask = getTask('sass', options.sass(DEV))
+var sassTask = getTask('sass', options.sass(DEV));
 gulp.task('sass', sassTask);
 
-var copyJsTask = getTask('copy-js', options.js(DEV))
+var copyJsTask = getTask('copy-bootstrap-js', options.bootstrap_js(DEV));
 gulp.task('js', copyJsTask);
 
 var initBrowserSyncTask = getTask('init-browser-sync', null);
@@ -22,7 +39,7 @@ gulp.task('serve', ['sass', 'js'], function() {
     initBrowserSyncTask();
     
     gulp.watch(options.sass(DEV).watch, ['sass']);
-    gulp.watch(options.js(DEV).watch).on('change', browserSync.reload);
+    gulp.watch(options.bootstrap_js(DEV).watch).on('change', browserSync.reload);
     gulp.watch(options.html(DEV).watch).on('change', browserSync.reload);
 });
 
