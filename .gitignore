@@ -213,5 +213,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-### Project specific ignores ###
+### Project specific ignores 
+# Temp ignores         
 /src/css/
+/src/js/
+/src/img/
