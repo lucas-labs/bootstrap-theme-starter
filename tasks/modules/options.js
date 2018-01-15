@@ -8,6 +8,12 @@ function getDest(env) {
     return ((env == 'prod') ? dist : source);    
 }
 
+exports.general = function (env) {
+    return {
+        dest: getDest(env)
+    }
+}
+
 exports.sass = function(env) {
     return {
         src: input + 'scss/*.scss',
@@ -15,7 +21,7 @@ exports.sass = function(env) {
         watch: watch + 'scss/**/*',
         env: env,
         sassOpts: {
-            outputStyle: 'nested',
+            outputStyle: ((env=='prod') ? 'compressed' : 'nested'),
             precison: 3,
             errLogToConsole: true,
             includePaths: [bootstrapSass.in]
@@ -23,11 +29,11 @@ exports.sass = function(env) {
     };
 }
 
-exports.js = function(env) {
+exports.bootstrap_js = function(env) {
     return {
         src: ['node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/jquery/dist/jquery.min.js','node_modules/popper.js/dist/umd/popper.min.js'],
         dest: getDest(env) + 'js/',
-        watch: watch + 'js/*.js',
+        watch: watch + 'js/**/*.js',
         env: env
     };
 }
@@ -35,7 +41,25 @@ exports.js = function(env) {
 exports.html = function(env) {
     return {
         src: input + "**/*.html",
+        dest: getDest(env),
         watch: watch + "**/*.html",
+        env: env
+    }
+}
+
+exports.js = function(env) {
+    return {
+        src: input + "**/*.js",
+        dest: getDest(env),
+        env: env
+    }
+}
+
+exports.img = function (env) {
+    return {
+        src: input + "img/**/*.*",
+        dest: getDest(env) + "img/",
+        watch: input + "img/**/*.*",
         env: env
     }
 }
