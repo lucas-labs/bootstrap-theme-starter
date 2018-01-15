@@ -15,6 +15,7 @@ gulp.task('build', function () {
     var copyHtmlFilesTask = getTask('copy-html-files-to-out', options.html(PROD));
     var processJs = getTask('process-js', options.js(PROD));
     var sassTask = getTask('sass', options.sass(PROD));
+    var imgTask = getTask('process-img', options.img(PROD));
 
     log("Generating HTML files");
     copyHtmlFilesTask();
@@ -23,8 +24,10 @@ gulp.task('build', function () {
     processJs();
 
     log("Compiling SASS and minifying CSS output");
-    log(options.sass(PROD))
     sassTask();
+
+    log("Processing and optimizing images");
+    imgTask();
 });
 
 /* Tasks */
@@ -41,6 +44,7 @@ gulp.task('serve', ['sass', 'js'], function() {
     gulp.watch(options.sass(DEV).watch, ['sass']);
     gulp.watch(options.bootstrap_js(DEV).watch).on('change', browserSync.reload);
     gulp.watch(options.html(DEV).watch).on('change', browserSync.reload);
+    gulp.watch(options.img(DEV)).watch.on('change', browserSync.reload);
 });
 
 gulp.task('default', ['serve']);

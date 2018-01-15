@@ -8,6 +8,12 @@ function getDest(env) {
     return ((env == 'prod') ? dist : source);    
 }
 
+exports.general = function (env) {
+    return {
+        dest: getDest(env)
+    }
+}
+
 exports.sass = function(env) {
     return {
         src: input + 'scss/*.scss',
@@ -35,8 +41,8 @@ exports.bootstrap_js = function(env) {
 exports.html = function(env) {
     return {
         src: input + "**/*.html",
-        watch: watch + "**/*.html",
         dest: getDest(env),
+        watch: watch + "**/*.html",
         env: env
     }
 }
@@ -45,6 +51,15 @@ exports.js = function(env) {
     return {
         src: input + "**/*.js",
         dest: getDest(env),
+        env: env
+    }
+}
+
+exports.img = function (env) {
+    return {
+        src: input + "img/**/*.*",
+        dest: getDest(env) + "img/",
+        watch: input + "img/**/*.*",
         env: env
     }
 }
