@@ -1,5 +1,5 @@
 # Bootstrap 4 Starter pack
-This project was designed to be an starter point for help you in the process of developing custom Bootstrap 4 themes.
+This project was designed to be an starter point to help you in the process of developing custom Bootstrap 4 themes.
 
 > Bootstrap version: 4.0.0.beta.3
 
