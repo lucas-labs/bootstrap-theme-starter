@@ -48,7 +48,7 @@ The result of the .scss compiling process is gonna be stored here.
 * ```/src/js/```  
 In this folder the bootstrap JS dependences will be stored. 
 * ```/src/img/```  
-You have to store your images here. The ```gulp build``` command will look at this folder and it will optimize the images founded.
+You have to store your images here. The ```gulp build``` command will look at this folder and optimize the images it founds.
 * ```/out```  
 The result of the ```gulp build``` command will be stored here.
 
@@ -65,7 +65,7 @@ The result of the ```gulp build``` command will be stored here.
 * Automatically minifies .css files
 * Automatically optimizes images.
 * Copies all the html files 
-* It stores the result of the building process into ```/out```
+* It stores the result of the building process into ```/out``` folder
 
 
 
