@@ -1,9 +1,9 @@
 # Bootstrap 4 Theming Starter pack
 This project was designed to be an starter point to help you in the process of developing custom Bootstrap 4 themes.
 
-> Bootstrap version: 4.0.0.beta.3
+> Bootstrap version: 4.0.0
 
-## What's into this repository?
+## What is inside this repository?
 This repository contains a basic project structure that serves as a base for developing bootstrap themes.
 
 It has a building script using [Gulp](https://gulpjs.com/) with a few tasks that makes it easy for you to develop and compile saas files, removing the need of performing boring and repetitive tasks.
