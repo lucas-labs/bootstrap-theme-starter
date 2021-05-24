@@ -1,7 +1,5 @@
-
-
-const { src, dest } = require('gulp');
 import { js as config, bootstrapJsDependences as bsJSConfig } from '../config';
+import { src, dest } from 'gulp';
 
 function js () {
     var stream = src(config.src)

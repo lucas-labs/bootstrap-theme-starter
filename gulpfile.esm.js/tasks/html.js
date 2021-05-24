@@ -1,4 +1,4 @@
-const { src, dest } = require('gulp');
+import { src, dest } from 'gulp';
 import { html as config } from '../config';
 
 function html () {

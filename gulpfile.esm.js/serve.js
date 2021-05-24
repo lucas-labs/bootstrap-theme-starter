@@ -1,10 +1,10 @@
-import logger from 'fancy-log';
+import { watch, series } from 'gulp';
 import { sass as sassConfig, html as htmlConfig, img as imgConfig } from './config';
 import { initBrowserSync, browserSync } from './tasks/browser-sync';
-import { html } from './tasks/html';
 import { sass as sassTask } from './tasks/sass';
 import { build } from './build';
-const { watch, series } = require('gulp');
+
+import logger from 'fancy-log';
 
 function startBrowserSync() {
     initBrowserSync();

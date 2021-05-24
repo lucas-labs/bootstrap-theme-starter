@@ -5,6 +5,5 @@ import { img } from './tasks/img';
 import { clean } from './tasks/clean';
 import { serve } from './serve';
 
-  
 export { build, sass, js, img, serve, clean };
 export { serve as default };

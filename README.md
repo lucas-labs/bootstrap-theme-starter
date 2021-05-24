@@ -1,7 +1,8 @@
 # Bootstrap 4 Theming Starter pack
 This project was designed to be an starter point to help you in the process of developing custom Bootstrap 4 themes.
 
-> Bootstrap version: 4.0.0
+> Bootstrap version: 5.0.1
+> Gulp version: 4.0.2
 
 ## What is inside this repository?
 This repository contains a basic project structure that serves as a base for developing bootstrap themes.
@@ -12,8 +13,8 @@ It has a building script using [Gulp](https://gulpjs.com/) with a few tasks that
 * Automatically compile sass files.
 * Automatically minifies the resulting .css files
 * Images optimization
-* Automatically inyects the bootstrap 4 javascript dependeces into the project.
-* It contains Browsersync which allows, [among other things](http://damonbauer.me/browsersync/), to synchronize the browser with the development enviroment by automagically injecting your source code changes into the browser, removing the need of performing a manual refresh.
+* Automatically injects the bootstrap 5 javascript dependeces into the project.
+* It uses Browsersync. This allows, [among other things](http://damonbauer.me/browsersync/), to synchronize the browser with the development enviroment by automagically injecting your source code changes into the browser, removing the need of performing a manual refresh.
 
 ## Prerequisites
 * Install [Node and Node Package Manager](http://nodejs.com)
@@ -59,15 +60,9 @@ The result of the ```gulp build``` command will be stored here.
 * Automatically injects the bootstrap JavaScript dependences into the project.
 * Initialize a BrowserSync server in ```/src```  
 
-### gulp build
+### gulp build --prod
 * Compiles the .scss files into css
 * Automatically injects the bootstrap JavaScript dependences into the project.
 * Automatically minifies .css files
 * Automatically optimizes images.
-* Copies all the html files 
 * It stores the result of the building process into ```/out``` folder
-
-
-
-
-

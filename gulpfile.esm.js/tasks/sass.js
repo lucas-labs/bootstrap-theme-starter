@@ -1,4 +1,4 @@
-const { src, dest } = require('gulp');
+import { src, dest } from 'gulp';
 import { mode, sass as config } from '../config';
 import wait from 'gulp-wait';
 import gulpSass from 'gulp-sass';

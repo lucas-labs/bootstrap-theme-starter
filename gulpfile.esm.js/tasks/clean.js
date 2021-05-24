@@ -4,7 +4,7 @@ import { basePath, mode } from '../config';
 
 function cleanBasePath(cb) {
     if(mode.prod()) {
-        return src(basePath(), { read: false })
+        return src(basePath(), { read: false, allowEmpty: true })
             .pipe(
                 clean()
             );
@@ -12,8 +12,5 @@ function cleanBasePath(cb) {
         cb();
     }
 }
-    
-
-    
 
 export { cleanBasePath as clean };
